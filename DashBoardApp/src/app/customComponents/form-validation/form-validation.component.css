@@ -1,0 +1,27 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.redBorder {
+  border-color: red;
+}
+
+.greenBorder {
+  border-color: green;
+}
+
+.redText {
+  color: red;
+}
+
+form {
+  min-width: 500px;
+  max-width: 500px;
+}
+
+
+.row {
+  margin: 10px;
+}

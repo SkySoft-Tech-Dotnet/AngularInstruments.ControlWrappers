@@ -1,0 +1,32 @@
+  <div class="left ">
+    <ul>
+      <a>
+        <li class="item-menu">
+          <fa name="trophy"></fa>
+          <span class="menu">DASHBOARD {{_loginedUser.username}}</span>
+        </li>
+      </a>
+      <a [routerLink]="['/dashboard/home']">
+        <li class="item-menu">
+          <fa name="home"></fa>
+          <span class="menu">Home</span>
+        </li>
+      </a>
+      <a [routerLink]="['/dashboard/about']">
+        <li class="item-menu">
+          <fa name="info-circle"></fa>
+          <span class="menu">About</span>
+        </li>
+      </a>
+      <a [routerLink]="['/login']">
+        <li class="item-menu">
+          <fa name="sign-out"></fa>
+          <span class="menu">Logout</span>
+        </li>
+      </a>
+    </ul>
+  </div> <!-- end left -->
+
+  <div class="right orange">
+    <router-outlet></router-outlet>
+  </div>

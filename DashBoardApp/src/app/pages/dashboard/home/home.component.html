@@ -1,0 +1,17 @@
+<h2 class="">Home page</h2>
+
+<sst-datatable [data]="myData">
+  <columns-def>
+    <column Title="ID" Property="id"></column>
+    <column Title="First Name" Property="firstName"></column>
+    <column Title="Last Name" Property="lastName"></column>
+  </columns-def>
+</sst-datatable>
+
+
+<button (click)="addItem({  id: 33,firstName: 'Bob', lastName: 'Bitcoin'})">
+  addItem
+</button>
+
+
+
