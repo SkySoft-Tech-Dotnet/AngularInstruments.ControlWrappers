@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { LoginService } from './login.service';
+import { LoginService } from '../../services/login.service';
 import { PersonModel } from '../../abstracts/person-model';
 
 import { isNullOrUndefined } from 'util';

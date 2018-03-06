@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { DashboardService } from './dashboard.service';
+import { DashboardService } from '../../services/dashboard.service';
 import { PersonModel } from '../../abstracts/person-model';
 
 

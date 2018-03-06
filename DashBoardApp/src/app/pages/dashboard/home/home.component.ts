@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
 import { TableContainModel } from '../../../abstracts/table-contain-model';
+import { Subject } from 'rxjs/Subject';
 
+import { SstDatatableService } from '../../../services/sst-datatable.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +13,7 @@ export class HomeComponent implements OnInit {
    
   myData: TableContainModel[];
 
-  constructor() {
+  constructor(private sstDatatableService: SstDatatableService) {
     this.myData = [
       { id: 0, firstName: "Bob1", lastName: "Borichev1" },
       { id: 1, firstName: "Bob2", lastName: "Borichev2" },
@@ -25,8 +27,9 @@ export class HomeComponent implements OnInit {
   }
 
   addItem(item: TableContainModel) {
-    this.myData.push(item);
-    console.log(this.myData);
+    //  this.myData.push(item);
+      this.sstDatatableService.addElement(item);
+
   }
 
   ngOnInit() {

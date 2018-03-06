@@ -6,13 +6,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-
 import { LoginComponent } from './pages/login/login.component';
-import { LoginService } from './pages/login/login.service';
 
 import { DataTablesModule } from 'angular-datatables';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { DashboardService } from './pages/dashboard/dashboard.service';
 
 import { HomeComponent } from './pages/dashboard/home/home.component';
 import { AboutComponent } from './pages/dashboard/about/about.component';
@@ -26,6 +23,9 @@ import { FormValidationComponent } from './customComponents/form-validation/form
 import { ColumnsDefComponent } from './customComponents/sst-datatable/columns-def/columns-def.component';
 import { ColumnComponent } from './customComponents/sst-datatable/columns-def/column/column.component';
 
+import { DashboardService } from './services/dashboard.service';
+import { LoginService } from './services/login.service';
+import { SstDatatableService } from './services/sst-datatable.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { ColumnComponent } from './customComponents/sst-datatable/columns-def/co
       { path: '**', redirectTo: '' }
     ]),
   ],
-  providers: [LoginService, DashboardService],
+  providers: [LoginService, DashboardService, SstDatatableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

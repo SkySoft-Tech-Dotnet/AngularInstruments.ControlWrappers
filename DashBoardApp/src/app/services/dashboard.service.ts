@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/rx';
-import { PersonModel } from '../../abstracts/person-model';
+import { PersonModel } from '../abstracts/person-model';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';

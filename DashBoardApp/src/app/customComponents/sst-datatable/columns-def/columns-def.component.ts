@@ -18,6 +18,7 @@ export class ColumnsDefComponent implements AfterViewInit {
 
   ngAfterViewInit() {
   }
+
   constructor() {
   }
 

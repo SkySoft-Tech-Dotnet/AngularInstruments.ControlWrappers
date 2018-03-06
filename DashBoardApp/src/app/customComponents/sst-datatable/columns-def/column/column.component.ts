@@ -8,20 +8,16 @@ export class ColumnComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input()
-  Title: string;
+  @Input() title: string;
 
-  @Input()
-  Property: string;
-
+  @Input() property: string;
 
   getName(): string {
-    return this.Title;
+    return this.title;
   }
   getProperty(): string {
-    return this.Property;
+    return this.property;
   }
-
 
   constructor() { }  
 }
