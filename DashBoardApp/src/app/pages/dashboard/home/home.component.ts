@@ -27,9 +27,8 @@ export class HomeComponent implements OnInit {
   }
 
   addItem(item: TableContainModel) {
-    //  this.myData.push(item);
-      this.sstDatatableService.addElement(item);
-
+      this.myData.push(item);
+      this.sstDatatableService.addElement();
   }
 
   ngOnInit() {

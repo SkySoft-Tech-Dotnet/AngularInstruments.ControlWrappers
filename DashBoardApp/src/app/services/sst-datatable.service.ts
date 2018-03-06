@@ -9,8 +9,8 @@ export class SstDatatableService {
     constructor() { 
     }
 
-    addElement(element: TableContainModel ) {
-        this.subject.next(element);
+    addElement() {
+        this.subject.next();
     }
 
     getElement(): Observable<TableContainModel> {

@@ -37,11 +37,20 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy{
     this.myTable = {};
 
     this.subscription = this.sstDatatableService.getElement().subscribe(element => {
-        console.log("subscription " + (element as TableContainModel) );
-        this.data.push(element as TableContainModel);
-        console.log(this.data);
+       // console.log("subscription " + (element as TableContainModel) );
+        // this.data.push(element as TableContainModel);
+        //console.log(this.data[this.data.length-1]);
         //this.myTable.ajax.reload();
-        this.myTable.draw();
+      
+        this.myTable.clear();
+        //this.myTable=$(this.node).find('table');
+        if (this.data && this.data.length != 0) 
+            for (var i = 0; i < this.data.length; i++) 
+                this.myTable.row.add(this.data[i]);
+      //      }
+            this.myTable.draw();
+       
+
     });
 
   }
@@ -60,7 +69,7 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-     // this.subscription.unsubscribe();
+     this.subscription.unsubscribe();
   }
 
   private initDatatable(): void {
