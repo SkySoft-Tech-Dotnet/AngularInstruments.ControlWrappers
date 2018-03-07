@@ -5,8 +5,8 @@ import { TableContainModel } from '../abstracts/table-contain-model';
 
 @Injectable()
 export class SstDatatableService {
-    private subject = new Subject<any>();
-    constructor() { 
+    private subject = new Subject<TableContainModel>();
+    constructor() {
     }
 
     addElement() {
