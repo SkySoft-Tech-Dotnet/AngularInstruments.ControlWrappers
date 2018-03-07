@@ -1,87 +1,84 @@
-
-  <form novalidate
-        [formGroup]="_myForm"
-        (ngSubmit)="onSubmit(_myForm)"
-        autocomplete="off">
-
+<form novalidate
+      [formGroup]="_myForm"
+      (ngSubmit)="onSubmit(_myForm)"
+      autocomplete="off">
     <div class="form-group">
-      <label for="name">
-        Name
-        <span class="redText">
-          *
-        </span>
-      </label>
-      <input type="text"
-             class="form-control"
-             formControlName="name"
-             placeholder="Enter name...">
+        <label for="name">
+            Name
+            <span class="redText">
+                *
+            </span>
+        </label>
+        <input type="text"
+               class="form-control"
+               formControlName="name"
+               placeholder="Enter name...">
 
-      <div *ngIf="_myForm.get('name').touched &&_myForm.get('name').invalid" class="alert alert-danger">
-        <div *ngIf="_myForm.get('name').hasError('required')">
-          Name is required!
+        <div *ngIf="_myForm.get('name').touched &&_myForm.get('name').invalid" class="alert alert-danger">
+            <div *ngIf="_myForm.get('name').hasError('required')">
+                Name is required!
+            </div>
+            <div *ngIf="_myForm.get('name').hasError('maxlength')">
+                Name max lenght is 20!
+            </div>
+            <div *ngIf="_myForm.get('name').hasError('minlength')">
+                Name min lenght is 3!
+            </div>
+            <div *ngIf="_myForm.get('name').hasError('pattern')">
+                Name only latters!
+            </div>
         </div>
-        <div *ngIf="_myForm.get('name').hasError('maxlength')">
-          Name max lenght is 20!
-        </div>
-        <div *ngIf="_myForm.get('name').hasError('minlength')">
-          Name min lenght is 3!
-        </div>
-        <div *ngIf="_myForm.get('name').hasError('pattern')">
-          Name only latters!
-        </div>
-      </div>
 
     </div>
 
     <div class="form-group">
-      <label for="age">
-        Age
-        <span class="redText">
-          *
-        </span>
-      </label>
-      <input type="text" class="form-control"
-             formControlName="age" placeholder="Enter age...">
+        <label for="age">
+            Age
+            <span class="redText">
+                *
+            </span>
+        </label>
+        <input type="text" class="form-control"
+               formControlName="age" placeholder="Enter age...">
 
-      <div *ngIf="_myForm.get('age').touched &&_myForm.get('age').invalid" class="alert alert-danger">
-        <div *ngIf="_myForm.get('age').hasError('required')">
-          Age is required!
+        <div *ngIf="_myForm.get('age').touched &&_myForm.get('age').invalid" class="alert alert-danger">
+            <div *ngIf="_myForm.get('age').hasError('required')">
+                Age is required!
+            </div>
+            <div *ngIf="_myForm.get('age').hasError('maxlength')">
+                Age max lenght is 3!
+            </div>
+            <div *ngIf="_myForm.get('age').hasError('pattern')">
+                Age only numbres!
+            </div>
+            <div *ngIf="_myForm.get('age').hasError('validAgeValue') && !_myForm.get('age').hasError('required') && !_myForm.get('age').hasError('pattern')">
+                Age more then 120 or less then 1!
+            </div>
         </div>
-        <div *ngIf="_myForm.get('age').hasError('maxlength')">
-          Age max lenght is 3!
-        </div>
-        <div *ngIf="_myForm.get('age').hasError('pattern')">
-          Age only numbres!
-        </div>
-        <div *ngIf="_myForm.get('age').hasError('validAgeValue') && !_myForm.get('age').hasError('required') && !_myForm.get('age').hasError('pattern')">
-          Age more then 120 or less then 1!
-        </div>
-      </div>
     </div>
 
     <div class="form-group">
-      <label for="phone">
-        Phone
-        <span class="redText">
-          *
-        </span>
-      </label>
-      <p-inputMask type="text" [style]="{'width':'100%'}" mask="+38(999)999-9999"
-                   class="form-control" formControlName="phone"
-                   placeholder="+38(___)___-____"></p-inputMask>
-      <div *ngIf="_myForm.get('phone').touched &&_myForm.get('phone').invalid" class="alert alert-danger">
-        <div *ngIf="_myForm.get('phone').hasError('required')">
-          Phone is required!
+        <label for="phone">
+            Phone
+            <span class="redText">
+                *
+            </span>
+        </label>
+        <p-inputMask type="text" [style]="{'width':'100%'}" mask="+38(999)999-9999"
+                     class="form-control" formControlName="phone"
+                     placeholder="+38(___)___-____"></p-inputMask>
+        <div *ngIf="_myForm.get('phone').touched &&_myForm.get('phone').invalid" class="alert alert-danger">
+            <div *ngIf="_myForm.get('phone').hasError('required')">
+                Phone is required!
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="row">
-      <div class="col"></div>
-      <div class="col-6">
-        <button type="submit" class="btn btn-success btn-block" [disabled]="_myForm.invalid" value="submit">submit</button>
-      </div>
-      <div class="col"></div>
+        <div class="col"></div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-success btn-block" [disabled]="_myForm.invalid" value="submit">submit</button>
+        </div>
+        <div class="col"></div>
     </div>
-
-  </form>
+</form>

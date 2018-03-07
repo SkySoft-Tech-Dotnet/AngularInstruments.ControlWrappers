@@ -7,5 +7,6 @@ export class PersonModel {
     }
 }
 
-PersonModel.prototype.toString = function PersonToString() { 
-    return 'Username=' + this.username + ' Login=' + this.login + ' Password=' + this.password; }
+PersonModel.prototype.toString = function PersonToString() {
+    return 'Username=' + this.username + ' Login=' + this.login + ' Password=' + this.password;
+}
