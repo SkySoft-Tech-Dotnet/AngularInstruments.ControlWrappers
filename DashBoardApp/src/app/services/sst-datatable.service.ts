@@ -13,6 +13,10 @@ export class SstDatatableService {
         this.subject.next();
     }
 
+    deleteElement() {
+        this.subject.next();
+    }
+
     getElement(): Observable<TableContainModel> {
         return this.subject.asObservable();
     }
