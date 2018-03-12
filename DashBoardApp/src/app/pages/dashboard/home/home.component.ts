@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     addItem(my_item: TableContainModel) {
         let item = new TableContainModel(my_item.id, my_item.firstName, my_item.lastName);
 
-        if (this.noNullOrUndefinedObject(item)) {
+        if (!this.noNullOrUndefinedObject(item)) {
             alert("Can't add. All fields required");
             return;
         } 
