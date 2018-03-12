@@ -45,6 +45,10 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        $('tr').click(function () {
+            $('.selected').removeClass('selected');
+            $(this).addClass('selected');
+        });
     }
 
     ngOnDestroy(): void {
@@ -52,6 +56,11 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private initDatatable(): void {
+        //this.myTable = new $.fn.dataTable.Editor({
+        //    table: $(this.node.nativeElement).find('table'),
+        //    data: this.data,
+        //    columns: this.columns,
+        //});
         this.myTable = $(this.node.nativeElement).find('table').DataTable({
             data: this.data,
             columns: this.columns

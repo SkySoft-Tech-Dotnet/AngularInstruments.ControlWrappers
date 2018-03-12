@@ -17,6 +17,10 @@ export class SstDatatableService {
         this.subject.next();
     }
 
+    editElement() {
+        this.subject.next();
+    }
+
     getElement(): Observable<TableContainModel> {
         return this.subject.asObservable();
     }

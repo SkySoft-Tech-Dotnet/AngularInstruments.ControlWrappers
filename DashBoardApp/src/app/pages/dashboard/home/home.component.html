@@ -1,11 +1,36 @@
 <h2 class="">Home page</h2>
 
-<button (click)="addItem({  id: 33,firstName: 'Bob', lastName: 'Bitcoin'})">
-    addItem
-</button>
-<button (click)="deleteItem({  id: 33,firstName: 'Bob', lastName: 'Bitcoin'})">
-    deleteItem
-</button>
+<fieldset class="align-top">
+    <legend>Add item</legend>
+    <input type="number" placeholder="id" name="id" [(ngModel)]="addTableItem.id"><br />
+    <input type="text" placeholder="firstName" name="firstName" [(ngModel)]="addTableItem.firstName"><br />
+    <input type="text" placeholder="lastName" name="lastName" [(ngModel)]="addTableItem.lastName"><br />
+    <button (click)="addItem(addTableItem)">
+        addItem
+    </button>
+</fieldset>
+
+<fieldset class="align-top">
+    <legend>Delete item</legend>
+    <input type="number" placeholder="itemId" name="idForDelete" [(ngModel)]="idForDelete"/><br/>
+    <button (click)="deleteItem(idForDelete)">
+        deleteItem
+    </button>
+</fieldset>
+
+<fieldset class="align-top">
+    <legend>Edit item</legend>
+    <select>
+        <option disabled selected>Choose id for editing</option>
+        <option *ngFor="let item of myData">{{item.id}}</option>
+    </select>
+
+    <div *ngIf="editTableItem!=null && editTableItem!=underfined">
+        <button (click)="editItem(editTableItem)">
+            EditItem
+        </button>
+    </div>
+</fieldset>
 
 <sst-datatable [data]="myData">
     <columns-def>

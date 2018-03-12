@@ -3,7 +3,15 @@ export class TableContainModel {
     firstName: string;
     lastName: string;
 
+    constructor(_id?: number,
+        _firstName?: string,
+        _lastName?: string, ) {
+        this.id = _id;
+        this.firstName= _firstName;
+        this.lastName= _lastName;
+    } 
+
     public toString(): string {
-        return "id=" + this.id + "_firstName=" + this.firstName + "_lastName=" + this.lastName;
+        return "id=" + this.id + " firstName=" + this.firstName + " lastName=" + this.lastName;
     }
 }
