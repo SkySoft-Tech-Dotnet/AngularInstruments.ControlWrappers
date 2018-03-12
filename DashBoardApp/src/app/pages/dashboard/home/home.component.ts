@@ -11,7 +11,6 @@ import { isNullOrUndefined } from 'util';
 
 export class HomeComponent implements OnInit {
     myData: TableContainModel[];
-
     addTableItem: TableContainModel;
     idForDelete: number;
     editTableItem: TableContainModel;
@@ -25,17 +24,7 @@ export class HomeComponent implements OnInit {
             new TableContainModel(4,   "Bob4",  "Borichev4"),
             new TableContainModel(5,   "Bob5",  "Borichev5"),
             new TableContainModel(6,  "Bob6",   "Borichev6")
-
-
-            //{ id: 0, firstName: "Bob0", lastName: "Borichev0" },
-            //{ id: 1, firstName: "Bob1", lastName: "Borichev1" },
-            //{ id: 2, firstName: "Bob2", lastName: "Borichev2" },
-            //{ id: 3, firstName: "Bob3", lastName: "Borichev3" },
-            //{ id: 4, firstName: "Bob4", lastName: "Borichev4" },
-            //{ id: 5, firstName: "Bob5", lastName: "Borichev5" },
-            //{ id: 6, firstName: "Bob6", lastName: "Borichev6" }
         ];
-
         this.addTableItem = new TableContainModel();
         this.editTableItem = new TableContainModel();
     }
@@ -43,11 +32,10 @@ export class HomeComponent implements OnInit {
     addItem(my_item: TableContainModel) {
         let item = new TableContainModel(my_item.id, my_item.firstName, my_item.lastName);
 
-        if (isNullOrUndefined(item.id) || isNullOrUndefined(item.firstName) || isNullOrUndefined(item.lastName)) {
+        if (this.noNullOrUndefinedObject(item)) {
             alert("Can't add. All fields required");
             return;
         } 
-
         if (this.isIdUnique(item.id)) {
             this.myData.push(item);
             this.sstDatatableService.addElement();
@@ -56,22 +44,30 @@ export class HomeComponent implements OnInit {
             alert("Id " + item.id+ " isn't unique. Try add with another id");
     }
 
+    noNullOrUndefinedItems(item: TableContainModel): boolean {
+        if (isNullOrUndefined(item.id) || isNullOrUndefined(item.firstName) || isNullOrUndefined(item.lastName))
+            return false;
+        return true;
+    }
+
+    noNullOrUndefinedObject(item: TableContainModel): boolean {
+        return !isNullOrUndefined(item);
+    }
+
     deleteItem(id: number) {
         if (isNullOrUndefined(id))
         {
             alert("Entered id can't be empty");
             return;
         }
-
         for (var i = 0; i < this.myData.length; i++) {
-            if (this.myData[i].id == id) {// === item.id && this.myData[i].firstName === item.firstName && this.myData[i].lastName === item.lastName) {
+            if (this.myData[i].id == id) {
                 console.log("Deleted item " + this.myData[i].toString());
                 this.myData.splice(i, 1);
                 this.sstDatatableService.deleteElement();
                 return;
             }
         }
-
         alert("Needed item id="+id+" doesn't exist");
     }
 
@@ -79,41 +75,43 @@ export class HomeComponent implements OnInit {
     }
 
     editItem(item: TableContainModel) {
-        alert(item.toString());
-//        let myItem = new TableContainModel();
+        console.log(item);
+        if (!this.noNullOrUndefinedObject(item)) {
+            alert("Object for editing empty");
+            return;
+        }
+        if (!this.noNullOrUndefinedItems(item)) {
+            alert("All fields for editing must be");
+        }
+        this.changeItemByFixedId(item);
     }
 
-    changeFirstName(id: number, firstName: string) {
+    changeItemByFixedId(newItem: TableContainModel) {
+       let find = false;
        for (var i in this.myData) {
-           if (this.myData[i].id == id) {
-               this.myData[i].firstName = firstName;
-               this.sstDatatableService.editElement();
-               break; 
+           if (this.myData[i].id == newItem.id) {
+               find = true;
+               this.myData[i].firstName = newItem.firstName;
+               this.myData[i].lastName = newItem.lastName;
+               this.sstDatatableService.editElement(); 
             }
         }
-       alert("Can't find element with id="+id);
-    }
-
-    changelastName(id: number, lastName: string) {
-        for (let i in this.myData) {
-            if(this.myData[i].id === id) {
-                this.myData[i].lastName = lastName;
-                this.sstDatatableService.editElement();
-                break; 
-            }
-        }
-        alert("Can't find element with id=" + id);
+        if (!find)
+             alert("Can't find element with id=" + newItem.id);
     }
 
     isIdUnique(id: number): boolean {
         for (var i = 0; i < this.myData.length; i++)
             if (this.myData[i].id === id)
-                return false;
+               return false;
         return true;
     }
 
+    getItemById(id: number): TableContainModel {
+        for (var i = 0; i < this.myData.length; i++)
+            if (this.myData[i].id === id)
+                return this.myData[i];
+        return null;
+    }
 
 }
-
-
-

@@ -20,12 +20,17 @@
 
 <fieldset class="align-top">
     <legend>Edit item</legend>
-    <select>
-        <option disabled selected>Choose id for editing</option>
-        <option *ngFor="let item of myData">{{item.id}}</option>
+    <!--data-live-search="true"-->
+    <select [(ngModel)]="editTableItem">
+        <option value="" disabled>Choose item id for editing</option>
+        <option *ngFor="let item of myData" [ngValue]="item">
+            {{item.id}}
+        </option>
     </select>
 
-    <div *ngIf="editTableItem!=null && editTableItem!=underfined">
+    <div *ngIf="noNullOrUndefinedObject(editTableItem) && noNullOrUndefinedItems(editTableItem)">
+        <input type="text" placeholder="firstName" name="firstName" [(ngModel)]="editTableItem.firstName"><br />
+        <input type="text" placeholder="lastName" name="lastName" [(ngModel)]="editTableItem.lastName"><br />
         <button (click)="editItem(editTableItem)">
             EditItem
         </button>
@@ -39,6 +44,3 @@
         <column title="Last Name" property="lastName"></column>
     </columns-def>
 </sst-datatable>
-
-
-
