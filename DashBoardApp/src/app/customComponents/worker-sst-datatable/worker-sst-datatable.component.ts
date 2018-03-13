@@ -56,6 +56,12 @@ export class WorkerSstDatatableComponent implements OnInit {
         return !isNullOrUndefined(item);
     }
 
+    noEmptyItems(item: TableContainModel): boolean {
+        if ( item.firstName == "" || item.lastName == "")
+            return false;
+        return true;
+    }
+
     deleteItem(id: number) {
         if (isNullOrUndefined(id)) {
             alert("Entered id can't be empty");
@@ -67,6 +73,7 @@ export class WorkerSstDatatableComponent implements OnInit {
                 this.myData.splice(i, 1);
                 this.myDataTableContext.refresh();
                 this.myDataTableContext.invalidate();
+                this.editTableItem = null;
                 return;
             }
         }
@@ -78,9 +85,11 @@ export class WorkerSstDatatableComponent implements OnInit {
             alert("Object for editing empty");
             return;
         }
-        if (!this.noNullOrUndefinedItems(item)) {
+        if (!this.noNullOrUndefinedItems(item) || !this.noEmptyItems(item) ) {
             alert("All fields for editing must be");
+            return;
         }
+
         this.changeItemByFixedId(item);
     }
 
