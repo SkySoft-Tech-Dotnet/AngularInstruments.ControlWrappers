@@ -8,18 +8,18 @@ import { ColumnComponent } from './column/column.component';
 export class ColumnsDefComponent implements AfterViewInit {
     @ContentChildren(ColumnComponent) public columnComponents: QueryList<ColumnComponent>;
 
+    constructor() {
+    }
+
     getColums() {
-        let arr = new Array();
-        this.columnComponents.toArray().forEach(el => {
-            arr.push(el);
+        let arrayColumns = new Array();
+        this.columnComponents.toArray().forEach(item => {
+            arrayColumns.push(item);
         });
-        return arr;
+        return arrayColumns;
     }
 
     ngAfterViewInit() {
-    }
-
-    constructor() {
     }
 
 }

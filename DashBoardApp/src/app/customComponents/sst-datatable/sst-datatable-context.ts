@@ -3,9 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs';
 import { SstDatatableContextTasks } from './sst-datatable-context-tasks.enum';
      
-
 export class SstDatatableContext {
-
     private subject: Subject<SstDatatableContextTasks>;
     
     constructor() {

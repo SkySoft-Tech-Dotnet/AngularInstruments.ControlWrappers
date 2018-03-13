@@ -3,21 +3,19 @@ import { Directive, OnInit, Input } from '@angular/core';
 @Directive({
     selector: 'column',
 })
-export class ColumnComponent implements OnInit {
-
-    ngOnInit(): void {
-    }
+export class ColumnComponent {
 
     @Input() title: string;
-
     @Input() property: string;
+
+    constructor() {
+    }
 
     getName(): string {
         return this.title;
     }
+
     getProperty(): string {
         return this.property;
     }
-
-    constructor() { }
 }

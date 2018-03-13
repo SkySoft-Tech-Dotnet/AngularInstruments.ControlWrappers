@@ -1,26 +1,19 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { TableContainModel } from '../../abstracts/table-contain-model';
 import { isNullOrUndefined } from 'util';
-
 import { SstDatatableContext } from '../sst-datatable/sst-datatable-context';
-
 
 @Component({
   selector: 'worker-sst-datatable',
   templateUrl: './worker-sst-datatable.component.html',
   styleUrls: ['./worker-sst-datatable.component.css']
 })
-export class WorkerSstDatatableComponent implements OnInit, AfterViewInit {
-
-    ngAfterViewInit(): void {
-       
-    }
+export class WorkerSstDatatableComponent implements OnInit {
 
     myData: TableContainModel[];
     addTableItem: TableContainModel;
     idForDelete: number;
     editTableItem: TableContainModel;
-
     myDataTableContext: SstDatatableContext;
 
     constructor() {
@@ -36,19 +29,16 @@ export class WorkerSstDatatableComponent implements OnInit, AfterViewInit {
         this.addTableItem = new TableContainModel();
         this.editTableItem = new TableContainModel();
         this.myDataTableContext = new SstDatatableContext();
-  
     }
 
     addItem(my_item: TableContainModel) {
         let item = new TableContainModel(my_item.id, my_item.firstName, my_item.lastName);
-
         if (!this.noNullOrUndefinedObject(item)) {
             alert("Can't add. All fields required");
             return;
         }
         if (this.isIdUnique(item.id)) {
             this.myData.push(item);
-
             this.myDataTableContext.refresh();
             this.myDataTableContext.invalidate();
         }
@@ -75,21 +65,15 @@ export class WorkerSstDatatableComponent implements OnInit, AfterViewInit {
             if (this.myData[i].id == id) {
                 console.log("Deleted item " + this.myData[i].toString());
                 this.myData.splice(i, 1);
-
                 this.myDataTableContext.refresh();
                 this.myDataTableContext.invalidate();
-
                 return;
             }
         }
         alert("Needed item id=" + id + " doesn't exist");
     }
 
-    ngOnInit() {
-    }
-
     editItem(item: TableContainModel) {
-        console.log(item);
         if (!this.noNullOrUndefinedObject(item)) {
             alert("Object for editing empty");
             return;
@@ -130,4 +114,6 @@ export class WorkerSstDatatableComponent implements OnInit, AfterViewInit {
         return null;
     }
 
+    ngOnInit() {
+    }
 }
