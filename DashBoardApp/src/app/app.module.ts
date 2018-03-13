@@ -18,8 +18,10 @@ import { ColumnsDefComponent } from './customComponents/sst-datatable/columns-de
 import { ColumnComponent } from './customComponents/sst-datatable/columns-def/column/column.component';
 import { DashboardService } from './services/dashboard.service';
 import { LoginService } from './services/login.service';
-import { SstDatatableService } from './services/sst-datatable.service';
+import { SstDatatableContext } from './customComponents/sst-datatable/sst-datatable-context';
 import { WorkerSstDatatableComponent } from './customComponents/worker-sst-datatable/worker-sst-datatable.component';
+
+
 
 @NgModule({
     declarations: [
@@ -58,7 +60,7 @@ import { WorkerSstDatatableComponent } from './customComponents/worker-sst-datat
             { path: '**', redirectTo: '' }
         ]),
     ],
-    providers: [LoginService, DashboardService, SstDatatableService],
+    providers: [LoginService, DashboardService, SstDatatableContext],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

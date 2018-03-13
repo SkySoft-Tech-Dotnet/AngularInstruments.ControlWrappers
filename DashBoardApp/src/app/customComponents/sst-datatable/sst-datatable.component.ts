@@ -4,8 +4,10 @@ import { Component, Input, OnInit, OnDestroy, AfterViewInit, QueryList, ViewChil
 import { TableContainModel } from '../../abstracts/table-contain-model';
 import { ColumnsDefComponent } from './columns-def/columns-def.component';
 import { ColumnComponent } from './columns-def/column/column.component';
-import { SstDatatableService } from '../../services/sst-datatable.service';
 import { Subscription } from 'rxjs/Subscription';
+
+import { SstDatatableContext } from './sst-datatable-context';
+import { SstDatatableContextTasks } from '../sst-datatable/sst-datatable-context-tasks.enum';
 
 @Component({
     selector: 'sst-datatable',
@@ -16,24 +18,20 @@ import { Subscription } from 'rxjs/Subscription';
 
 export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() data: TableContainModel[];
-    @ContentChild(ColumnsDefComponent) columnsDefComponent: ColumnsDefComponent;
+    @Input() dataTableContext: SstDatatableContext;
+
+
     subscription: Subscription;
+
+    @ContentChild(ColumnsDefComponent) columnsDefComponent: ColumnsDefComponent; 
     columns: Array<object>;
     node: ElementRef;
     myTable: any;
 
-    constructor(private element: ElementRef, private sstDatatableService: SstDatatableService) {
+    constructor(private element: ElementRef) {
         this.columns = new Array();
         this.node = element;
         this.myTable = {};
-
-        this.subscription = this.sstDatatableService.getElement().subscribe(element => {
-            this.myTable.clear();
-            if (this.data && this.data.length != 0)
-                for (var i = 0; i < this.data.length; i++)
-                    this.myTable.row.add(this.data[i]);
-            this.myTable.draw();
-        });
     }
 
     ngAfterViewInit(): void {
@@ -44,10 +42,25 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        //$('tr').click(function () {
-        //    $('.selected').removeClass('selected');
-        //    $(this).addClass('selected');
-        //});
+        this.subscription = this.dataTableContext.getContext().subscribe(context => {
+
+            if (context == SstDatatableContextTasks.Refresh) {
+                this.myTable.clear();
+                if (this.data && this.data.length != 0)
+                    for (var i = 0; i < this.data.length; i++)
+                        this.myTable.row.add(this.data[i]);
+
+                console.log("refresh");
+            }
+
+            if (context == SstDatatableContextTasks.Invalidate) {
+                this.myTable.draw();
+                console.log("draw");
+            }
+            //this.dataTableContext.refresh();
+            //this.dataTableContext.invalidate();
+            //this.dataTableContext.reload();
+        });
     }
 
     ngOnDestroy(): void {

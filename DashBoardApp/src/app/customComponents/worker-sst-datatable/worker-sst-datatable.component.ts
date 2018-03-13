@@ -1,21 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TableContainModel } from '../../abstracts/table-contain-model';
-import { SstDatatableService } from '../../services/sst-datatable.service';
 import { isNullOrUndefined } from 'util';
+
+import { SstDatatableContext } from '../sst-datatable/sst-datatable-context';
+
 
 @Component({
   selector: 'worker-sst-datatable',
   templateUrl: './worker-sst-datatable.component.html',
   styleUrls: ['./worker-sst-datatable.component.css']
 })
-export class WorkerSstDatatableComponent implements OnInit {
+export class WorkerSstDatatableComponent implements OnInit, AfterViewInit {
+
+    ngAfterViewInit(): void {
+       
+    }
 
     myData: TableContainModel[];
     addTableItem: TableContainModel;
     idForDelete: number;
     editTableItem: TableContainModel;
 
-    constructor(private sstDatatableService: SstDatatableService) {
+    myDataTableContext: SstDatatableContext;
+
+    constructor() {
         this.myData = [
             new TableContainModel(0, "Bob0", "Borichev0"),
             new TableContainModel(1, "Bob1", "Borichev1"),
@@ -27,6 +35,8 @@ export class WorkerSstDatatableComponent implements OnInit {
         ];
         this.addTableItem = new TableContainModel();
         this.editTableItem = new TableContainModel();
+        this.myDataTableContext = new SstDatatableContext();
+  
     }
 
     addItem(my_item: TableContainModel) {
@@ -38,7 +48,9 @@ export class WorkerSstDatatableComponent implements OnInit {
         }
         if (this.isIdUnique(item.id)) {
             this.myData.push(item);
-            this.sstDatatableService.addElement();
+
+            this.myDataTableContext.refresh();
+            this.myDataTableContext.invalidate();
         }
         else
             alert("Id " + item.id + " isn't unique. Try add with another id");
@@ -63,7 +75,10 @@ export class WorkerSstDatatableComponent implements OnInit {
             if (this.myData[i].id == id) {
                 console.log("Deleted item " + this.myData[i].toString());
                 this.myData.splice(i, 1);
-                this.sstDatatableService.deleteElement();
+
+                this.myDataTableContext.refresh();
+                this.myDataTableContext.invalidate();
+
                 return;
             }
         }
@@ -92,7 +107,9 @@ export class WorkerSstDatatableComponent implements OnInit {
                 find = true;
                 this.myData[i].firstName = newItem.firstName;
                 this.myData[i].lastName = newItem.lastName;
-                this.sstDatatableService.editElement();
+
+                this.myDataTableContext.refresh();
+                this.myDataTableContext.invalidate();
             }
         }
         if (!find)
