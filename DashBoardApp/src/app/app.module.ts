@@ -19,6 +19,7 @@ import { ColumnComponent } from './customComponents/sst-datatable/columns-def/co
 import { DashboardService } from './services/dashboard.service';
 import { LoginService } from './services/login.service';
 import { SstDatatableService } from './services/sst-datatable.service';
+import { WorkerSstDatatableComponent } from './customComponents/worker-sst-datatable/worker-sst-datatable.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { SstDatatableService } from './services/sst-datatable.service';
         SstDataTableComponent,
         FormValidationComponent,
         ColumnsDefComponent,
-        ColumnComponent
+        ColumnComponent,
+        WorkerSstDatatableComponent
     ],
     imports: [
         InputMaskModule,

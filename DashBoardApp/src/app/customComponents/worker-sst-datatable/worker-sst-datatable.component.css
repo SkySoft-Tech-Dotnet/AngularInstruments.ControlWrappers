@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.red {
+    background-color: red;
+}
+
+fieldset {
+    display: inline;
+    margin: 5px;
+}
