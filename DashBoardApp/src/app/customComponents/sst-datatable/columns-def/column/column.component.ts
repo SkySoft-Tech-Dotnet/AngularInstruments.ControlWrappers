@@ -1,4 +1,4 @@
-import { Directive, OnInit, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
     selector: 'column',

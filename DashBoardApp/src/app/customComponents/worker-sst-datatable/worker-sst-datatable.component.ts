@@ -9,7 +9,6 @@ import { SstDatatableContext } from '../sst-datatable/sst-datatable-context';
   styleUrls: ['./worker-sst-datatable.component.css']
 })
 export class WorkerSstDatatableComponent implements OnInit {
-
     myData: TableContainModel[];
     addTableItem: TableContainModel;
     idForDelete: number;

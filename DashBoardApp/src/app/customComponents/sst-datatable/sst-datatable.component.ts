@@ -1,5 +1,6 @@
 import * as $ from 'jquery';
 import 'datatables.net'
+
 import { Component, Input, OnInit, OnDestroy, AfterViewInit, QueryList, ViewChild, ElementRef, ContentChild } from '@angular/core';
 import { TableContainModel } from '../../abstracts/table-contain-model';
 import { ColumnsDefComponent } from './columns-def/columns-def.component';
