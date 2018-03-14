@@ -33,7 +33,8 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     private initDatatable(): void {
         this.myTable = $(this.node.nativeElement).find('table').DataTable({
             data: this.data,
-            columns: this.columns
+            columns: this.columns,
+            //rowReorder: true
         });
     }
 
