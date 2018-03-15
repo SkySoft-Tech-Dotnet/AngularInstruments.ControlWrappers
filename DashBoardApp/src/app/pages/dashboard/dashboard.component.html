@@ -1,39 +1,40 @@
-<!--<div class="left ">
-    <ul>
-        <a>
-            <li class="item-menu">
-                <fa name="trophy"></fa>
-                <span class="menu">DASHBOARD {{_loginedUser.username}}</span>-->
 
-<div class="nav-side-menu">
+<div class="my_container">
 
-    <div class="brand">SKY SOFT</div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="nav-side-menu">
+        <div class="brand">SKY SOFT</div>
 
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-    <div class="menu-list">
-        <ul id="menu-content" class="menu-content collapse out">
-            <div>Main</div>
-            <a [routerLink]="['/dashboard/home']">
-                <li>
-                    <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                </li>
-            </a>
-            <a [routerLink]="['/dashboard/about']">
-                <li>
-                    <i class="fa fa-info-circle fa-lg"></i> About
-                </li>
-            </a>
-           
-        </ul>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <div>Main</div>
+                <a [routerLink]="['/dashboard/home']">
+                    <li>
+                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                    </li>
+                </a>
+                <a [routerLink]="['/dashboard/about']">
+                    <li>
+                        <i class="fa fa-info-circle fa-lg"></i> About
+                    </li>
+                </a>
+
+            </ul>
+        </div>
     </div>
-</div>
 
-<div class="right workPlaceColor">
-    <div>
-        <a [routerLink]="['/login']">
-            <i class="fa fa-sign-out fa-lg"></i> Loqout
-        </a>
+    <div class="right">
+        <div class="user">
+            <a>User: {{_loginedUser.username}}</a>
+            <a [routerLink]="['/login']">
+                <i class="fa fa-sign-out fa-lg"></i> Logout
+            </a>
+        </div>
+
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
     </div>
-    <router-outlet></router-outlet>
+
 </div>
