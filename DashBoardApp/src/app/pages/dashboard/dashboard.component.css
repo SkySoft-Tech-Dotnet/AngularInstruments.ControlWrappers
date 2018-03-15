@@ -2,12 +2,16 @@
     background-color: #F9FBFD;
 }
 
+/*.content {
+    margin: 50px;
+}*/
 
 .right {
     height: 100%;
     width: calc(100% - 200px);
     margin-left: 200px;
-    overflow-y:auto;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 
@@ -142,9 +146,4 @@
         display: block;
 
     }
-}
-
-body {
-    margin: 0px;
-    padding: 0px;
 }

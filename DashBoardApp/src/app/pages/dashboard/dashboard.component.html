@@ -3,33 +3,7 @@
         <a>
             <li class="item-menu">
                 <fa name="trophy"></fa>
-                <span class="menu">DASHBOARD {{_loginedUser.username}}</span>
-            </li>
-        </a>
-        <a [routerLink]="['/dashboard/home']">
-            <li class="item-menu">
-                <fa name="home"></fa>
-                <span class="menu">Home</span>
-            </li>
-        </a>
-        <a [routerLink]="['/dashboard/about']">
-            <li class="item-menu">
-                <fa name="info-circle"></fa>
-                <span class="menu">About</span>
-            </li>
-        </a>
-        <a [routerLink]="['/login']">
-            <li class="item-menu">
-                <fa name="sign-out"></fa>
-                <span class="menu">Logout</span>
-            </li>
-        </a>
-    </ul>
-</div>  end left
-
-<div class="right orange">
-    <router-outlet></router-outlet>
-</div>-->
+                <span class="menu">DASHBOARD {{_loginedUser.username}}</span>-->
 
 <div class="nav-side-menu">
 
@@ -38,9 +12,6 @@
 
 
     <div class="menu-list">
-
-        
-   
         <ul id="menu-content" class="menu-content collapse out">
             <div>Main</div>
             <a [routerLink]="['/dashboard/home']">
@@ -53,54 +24,16 @@
                     <i class="fa fa-info-circle fa-lg"></i> About
                 </li>
             </a>
-            <a [routerLink]="['/login']">
-                <li>
-                    <i class="fa fa-sign-out fa-lg"></i> Loqout
-                </li>
-            </a>
+           
         </ul>
-            <!--li data-toggle="collapse" data-target="#products" class="collapsed active">
-        <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-    </li>
-    <ul class="sub-menu collapse" id="products">
-        <li class="active"><a href="#">CSS3 Animation</a></li>
-        <li><a href="#">General</a></li>
-        <li><a href="#">Buttons</a></li>
-        <li><a href="#">Tabs & Accordions</a></li>
-        <li><a href="#">Typography</a></li>
-        <li><a href="#">FontAwesome</a></li>
-        <li><a href="#">Slider</a></li>
-        <li><a href="#">Panels</a></li>
-        <li><a href="#">Widgets</a></li>
-        <li><a href="#">Bootstrap Model</a></li>
-    </ul>-->
-            <!--<li data-toggle="collapse" data-target="#service" class="collapsed">
-        <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-    </li>
-    <ul class="sub-menu collapse" id="service">
-        <li>New Service 1</li>
-        <li>New Service 2</li>
-        <li>New Service 3</li>
-    </ul>
-
-    <li data-toggle="collapse" data-target="#new" class="collapsed">
-        <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
-    </li>
-    <ul class="sub-menu collapse" id="new">
-        <li>New New 1</li>
-        <li>New New 2</li>
-        <li>New New 3</li>
-    </ul>-->
-            <!--<li>
-        <a href="#">
-            <i class="fa fa-user fa-lg"></i> Profile
-        </a>
-    </li>-->
-
-     
     </div>
 </div>
 
 <div class="right workPlaceColor">
+    <div>
+        <a [routerLink]="['/login']">
+            <i class="fa fa-sign-out fa-lg"></i> Loqout
+        </a>
+    </div>
     <router-outlet></router-outlet>
 </div>
