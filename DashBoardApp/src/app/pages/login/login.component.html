@@ -1,33 +1,27 @@
 <div class="container d-flex align-items-center justify-content-center">
-    <form method="post" autocomplete="off">
-
-        <div class="row align-items-center">
-            <div class="col text-center">
-                <h2>Login page</h2>
+    <form method="post" autocomplete="off" class="loginForm">
+        <div class="row">
+            <div class="col">
+                <h1 class="pageName">Wellcome to Dashboard</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-5">
-                <label for="userLogin">User login</label>
-            </div>
-            <div class="col-7">
-                <input id="userLogin" class="form-control form-control-lg" [(ngModel)]="_currentPerson.login" name="login" type="text" placeholder="Login">
+            <div class="col">
+                <input id="userLogin" class="form-control input-underline input-lg" [(ngModel)]="_currentPerson.login" name="login" type="text" placeholder="Login">
             </div>
         </div>
         <div class="row">
-            <div class="col-5">
-                <label for="userPassword">User password</label>
-            </div>
-            <div class="col-7">
-                <input id="userPassword" class="form-control form-control-lg" [(ngModel)]="_currentPerson.password" name="password" type="password" placeholder="Password">
+            <div class="col">
+                <input id="userPassword" class="form-control input-underline input-lg" [(ngModel)]="_currentPerson.password" name="password" type="password" placeholder="Password">
             </div>
         </div>
         <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <button class="btn btn-success  btn-block btn-lg" type="button" (click)="Login();">Login</button>
+            <div class="col-6 text-center">
+                <a class="btn rounded-btn" (click)="Login();">Login</a>
             </div>
-            <div class="col-3"></div>
+            <div class="col-6 text-center">
+                <a class="btn rounded-btn" (click)="Register();">Register</a>
+            </div>
         </div>
     </form>
 </div>

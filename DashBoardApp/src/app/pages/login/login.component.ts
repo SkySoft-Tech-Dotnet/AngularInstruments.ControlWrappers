@@ -38,4 +38,8 @@ export class LoginComponent implements OnInit {
             });
     }
 
+
+    Register() {
+        alert("Will be work soon");
+    }
 }
