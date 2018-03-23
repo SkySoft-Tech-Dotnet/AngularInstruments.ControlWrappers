@@ -1,44 +1,176 @@
-<div class="my_container">
-    
+    <!--<div class="brand">SKY SOFT</div>-->
+<!--<div class="nav-side-menu">
     <div class="brand">SKY SOFT</div>
 
-    
-    
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-    <!--<div class="nav-side-menu">
-        <div class="brand">SKY SOFT</div>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <div>Main</div>
+            <a [routerLink]="['/dashboard/home']">
+                <li>
+                    <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                </li>
+            </a>
+            <a [routerLink]="['/dashboard/about']">
+                <li>
+                    <i class="fa fa-info-circle fa-lg"></i> About
+                </li>
+            </a>
 
-        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        </ul>
+    </div>
+</div>
 
-        <div class="menu-list">
-            <ul id="menu-content" class="menu-content collapse out">
-                <div>Main</div>
-                <a [routerLink]="['/dashboard/home']">
-                    <li>
-                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                    </li>
-                </a>
-                <a [routerLink]="['/dashboard/about']">
-                    <li>
-                        <i class="fa fa-info-circle fa-lg"></i> About
-                    </li>
-                </a>
-
-            </ul>
-        </div>
+<div class="right">
+    <div class="user">
+        <a>User: {{_loginedUser.username}}</a>
+        <a [routerLink]="['/login']">
+            <i class="fa fa-sign-out fa-lg"></i> Logout
+        </a>
     </div>
 
-    <div class="right">
-        <div class="user">
-            <a>User: {{_loginedUser.username}}</a>
-            <a [routerLink]="['/login']">
-                <i class="fa fa-sign-out fa-lg"></i> Logout
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>-->
+
+<!--<nav class="navbar navbar-expand-lg fixed-top">
+
+    <h1 class="navbar-brand">SKY SOFT</h1>
+
+    <button class="navbar-toggler" type="button">
+        <i aria-hidden="true" class="fa fa-bars text-muted"></i>
+    </button>
+
+    <div class="collapse navbar-collapse">
+
+     
+       
+
+        <!--<li class="nav-item dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+        </li>-->
+
+
+
+        <!--<li class="nav-item dropdown">
+            <a aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" aria-expanded="false">
+                <i class="fa fa-user"></i> User: {{_loginedUser.username}} <b class="caret"></b>
             </a>
+            <div class="dropdown-menu-right dropdown-menu" style="top: 40px; left: 0px;">
+                <a class="dropdown-item" href="javascript:void(0)">
+                    <i class="fa fa-fw fa-user"></i> Profile
+                </a>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    <i class="fa fa-fw fa-envelope"></i> Inbox
+                </a>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    <i class="fa fa-fw fa-gear"></i> Settings
+                </a>
+                <a class="dropdown-item" [routerLink]="['/login']">
+                    <i class="fa fa-fw fa-power-off"></i> Log Out
+                </a>
+            </div>
+        </li>-->
+
+    <!--</div>
+</nav>-->
+
+
+
+<!--<nav class="sidebar">
+    <div class="list-group">
+
+        <a class="list-group-item router-link-active">
+            <i class="fa fa-fw fa-dashboard"></i>Dashboard
+        </a>
+        <a class="list-group-item">
+            <i class="fa fa-fw fa-bar-chart-o"></i>About
+        </a>
+
+
+
+        <div class="header-fields">
+
+            <div class="nested-menu">
+                <a class="list-group-item">
+                    <span><i class="fa fa-user"></i>User: {{_loginedUser.username}}</span>
+                </a>
+                <li class="nested">
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-user"></i> Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-gear"></i> Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/login']">
+                                <span><i class="fa fa-fw fa-power-off"></i> Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+</nav>-->
+
+
+<div class="main-container">
+
+    
+    <div class="header btn-toolbar align-items-center justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="brand">
+            <div class="image">
+                <img src="favicon.ico">
+            </div>   
+            <div class="title">
+                SKY SOFT
+            </div>
         </div>
 
-        <div class="content">
-            <router-outlet></router-outlet>
+        <div class="dropdown  userInfo">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true">
+                <i class="fa fa-user"></i>{{_loginedUser.username}}<b class="caret"></b>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="">
+                    <i class="fa fa-fw fa-user"></i> Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="">
+                    <i class="fa fa-fw fa-gear"></i> Account settings
+                </a>
+                <a class="dropdown-item" [routerLink]="['/login']">
+                    <i class="fa fa-fw fa-power-off"></i> Log Out
+                </a>
+            </div>
         </div>
-    </div>-->
+
+    </div>
+    
+  
+    
+    
+
+    <div class="work-place">
+        <router-outlet></router-outlet>
+    </div>
+
 
 </div>
+
+
