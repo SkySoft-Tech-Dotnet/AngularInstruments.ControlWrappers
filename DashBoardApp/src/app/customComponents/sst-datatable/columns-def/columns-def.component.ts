@@ -2,14 +2,11 @@ import { Directive, QueryList, AfterViewInit, ContentChildren } from '@angular/c
 import { ColumnComponent } from './column/column.component';
 
 @Directive({
-    selector: 'columns-def',
+    selector: 'columns-def'
 })
 
 export class ColumnsDefComponent implements AfterViewInit {
     @ContentChildren(ColumnComponent) public columnComponents: QueryList<ColumnComponent>;
-
-    constructor() {
-    }
 
     getColums() {
         let arrayColumns = new Array();

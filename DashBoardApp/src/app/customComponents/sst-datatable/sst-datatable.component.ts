@@ -1,10 +1,8 @@
 import * as $ from 'jquery';
 import 'datatables.net'
-
 import { Component, Input, OnInit, OnDestroy, AfterViewInit, QueryList, ViewChild, ElementRef, ContentChild } from '@angular/core';
 import { TableContainModel } from '../../abstracts/table-contain-model';
 import { ColumnsDefComponent } from './columns-def/columns-def.component';
-import { ColumnComponent } from './columns-def/column/column.component';
 import { Subscription } from 'rxjs/Subscription';
 import { SstDatatableContext } from './sst-datatable-context';
 import { SstDatatableContextTasks } from '../sst-datatable/sst-datatable-context-tasks.enum';
@@ -33,8 +31,7 @@ export class SstDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     private initDatatable(): void {
         this.myTable = $(this.node.nativeElement).find('table').DataTable({
             data: this.data,
-            columns: this.columns,
-            //rowReorder: true
+            columns: this.columns
         });
     }
 

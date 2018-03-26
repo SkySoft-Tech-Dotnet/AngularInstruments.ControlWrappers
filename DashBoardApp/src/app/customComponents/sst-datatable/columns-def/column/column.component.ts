@@ -1,15 +1,11 @@
 import { Directive, Input } from '@angular/core';
 
 @Directive({
-    selector: 'column',
+    selector: 'column'
 })
 export class ColumnComponent {
-
     @Input() title: string;
     @Input() property: string;
-
-    constructor() {
-    }
 
     getName(): string {
         return this.title;
